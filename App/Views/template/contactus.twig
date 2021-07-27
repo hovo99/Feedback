@@ -1,0 +1,28 @@
+<h1>Contact us </h1>
+<a class="btn btn-success" href="/login">admin</a>
+<form id="basic-form" action="/validation" method="POST">
+    <div>
+        <div >
+            <input type="text" class="input-text" id="name" name="first_name" placeholder="First Name">
+        </div>
+        <div >
+            <input type="text" class="input-text" id="last_name" name="last_name" placeholder="Last Name" >
+        </div>
+        <div >
+            <input type="text" class="input-text" name="mail" placeholder="E-mail" >
+        </div>
+        <div >
+            <textarea name="message" maxlength="5000" class="input-text textarea" placeholder="Message field"></textarea>
+        </div>
+        <div>
+            <div style="display: inline-block ; align-items: center" class="g-recaptcha" data-sitekey="6LfCqcIbAAAAAPQHiIz0_0e8U6PO1Ia4qXEIeYiy"></div><br>
+        </div>
+    </div>
+        <input type="submit" value="Send" name="message_send" class="btn btn-primary">
+</form>
+
+                            {% if data.status is defined and  data.status == true %}
+                                <div class="success-message">
+                                    Your message was successfully sent
+                                </div>
+                            {% endif %}
