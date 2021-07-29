@@ -7,7 +7,6 @@
     use Twig\Loader\FilesystemLoader;
     
     class View {
-        
         public function getTemplate($templateName, $status = NULL, $messageData = NULL, $pageInfo = NULL, $pageCount = NULL) {
             $templateDir = "../App/Views/template/$templateName";
             $data = [
@@ -31,5 +30,4 @@
                 Router::get404();
             }
         }
-        
     }

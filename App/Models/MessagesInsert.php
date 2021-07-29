@@ -7,7 +7,7 @@
     class MessagesInsert extends Model {
         
         public function InsertMessages($messageData) {
-                $pdo = Model::getDB();
+            $pdo = Model::getDB();
             $state = $pdo->prepare("INSERT INTO `message` (`first_name`, `last_name`, `mail`, `message`) VALUES (?,?,?,?)");
             $state->bindParam(1, $messageData[1]);
             $state->bindParam(2, $messageData[2]);

@@ -5,10 +5,7 @@ $(document).ready(function() {
                 required: true,
                 minlength: 3
             },
-            last_name: {
-                required: true,
-                minlength: 3
-            },
+
             mail: {
                 required: true,
                 email: true
@@ -22,10 +19,6 @@ $(document).ready(function() {
             first_name : {
                 required: "Please enter your First Name",
                 minlength: "First Name should be at least 3 characters"
-            },
-            last_name: {
-                required: "Please enter your Last Name",
-                minlength: "Last Name should be at least 3 characters"
             },
             mail: {
                 required: "Please enter your E-mail",

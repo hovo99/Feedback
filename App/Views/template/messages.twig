@@ -6,19 +6,21 @@
     <h1>Messages</h1>
 
         {% for post in data.messageData %}
-            <div {% if post.status == 1 %}  style="background-color: green !important;" {% endif%} class="message">
+            <div {% if post.status == 1 %}   class="bg-light message"  {% endif%} class="message">
             <h2>{{post.id}} {{post.first_name}} {{ post.last_name }} {{ post.mail }}</h2>
                 {% if post.message|length > 600 %}
                         <h3 class="text-justify">{{ post.message|slice(0,600) }}</h3>
                 {% else %}
                    <h3>{{ post.message }}</h3>
                     {% endif %}
-            <a href="/messages/post/{{ post.id }}">read more</a>
-            {% if post.status == 0  %}
-                unread
+            <a class="text-warning" href="/messages/post/{{ post.id }}">read more</a>
+            <p class="status">
+                {% if post.status == 0 %}
+                    unread
                 {% else %}
-                read
+                     read
             {% endif %}
+            </p>
             <form action="/messages/delete/" method="POST">
                 <input  type="hidden" name="delete_file" value="{{ post.id }}">
                 <button class="btn btn-danger" type="submit">Delete</button>
@@ -36,9 +38,9 @@
 
             {% endif %}
 
-            {% for page in data.pageCount %}
-                {{ page }}
-            {% endfor %}
+{#            {% for page in data.pageCount %}#}
+{#                {{ page }}#}
+{#            {% endfor %}#}
 {#            {{ data.pageInfo }}#}
 {#            {{ data.pageCount }}#}
 

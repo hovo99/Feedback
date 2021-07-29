@@ -14,9 +14,9 @@
                 $db = static::getDB();
                 
                 $leftLimit = $messagePerPage * ($numPage - 1);
-                $state = $db->prepare("SELECT * FROM `message` LIMIT $leftLimit, $messagePerPage");
+                $state = $db->prepare("SELECT * FROM `message` ORDER BY created_at DESC  LIMIT $leftLimit, $messagePerPage");
                 $state->execute();
-            $results = $state->fetchAll(PDO::FETCH_ASSOC);
+                $results = $state->fetchAll(PDO::FETCH_ASSOC);
             return $results;
         }
          public static function getPageCount(){

@@ -26,7 +26,6 @@
             }
             $controller = ucfirst($controllerName) . "Controller";
             $controller = "\App\Controller\\$controller";
-//            echo $controller;
             if (class_exists($controller)) {
                 $controller = new $controller;
                 if (method_exists($controller, $actionName) && isset($uri[2])) {
@@ -43,11 +42,9 @@
                 $this->get404();
             }
         }
-        
         public static function get404() {
             $view = new ErrorView;
             $view->index();
             die();
         }
-        
     }

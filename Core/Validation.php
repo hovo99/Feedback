@@ -8,6 +8,9 @@ class Validation {
         $email =  $_POST['mail'];
         $message =  $_POST['message'];
         $errors = [];
+        if (!$lname){
+            $lname = " ";
+        }
         if (isset($_POST['g-recaptcha-response'])){
             $secreatkey = "6LfCqcIbAAAAAI4UDnuhC-sXGgEXfa44-KCchgvF";
             $ip = $_SERVER['REMOTE_ADDR'];
@@ -20,10 +23,10 @@ class Validation {
             }
         }
         
-        if (!preg_match("/^[a-z ]+$/i", $name)) {
+        if (!preg_match("/^[a-z _! \"#$%&'()*+,\-.\\:\/;=?@^_]+$/i", $name)) {
             array_push($errors, 'ERRRORR');
         }
-        if (!preg_match("/^[a-z ]+$/i", $lname)) {
+        if (!preg_match("/^[a-z _! \"#$%&'()*+,\-.\\:\/;=?@^_]+$/i", $lname)) {
             array_push($errors, 'asdsdasdd');
         }
         if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i", $email)){
@@ -32,7 +35,6 @@ class Validation {
         if (strlen($message) < 15) {
             array_push($errors, 'Message a very short');
         }
-//        echo print_r($errors);
         if (count($errors) == 0){
             return  [TRUE, $name, $lname, $email, $message ];
         }

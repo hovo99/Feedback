@@ -6,12 +6,9 @@
     use App\Views\MessagesView;
     use App\Models\MessagesModel;
     use App\Views\PageView;
-    use Core\Controller;
-    use Core\Model;
     use Core\Router;
-    use Core\View;
 
-    class MessagesController extends Controller
+    class MessagesController
     {
         public function __construct()
         {
@@ -30,18 +27,12 @@
             $asd = MessagesModel::getPageCount();
             $messagesView = new MessagesView();
             $messagesView->index($posts, $numPage, $asd);
-//            echo $asd;
-            
-//            echo $numPage;
-//            echo $pageCount;
         }
         public function post($id){
             $message = new MessagesModel;
             $messageID = $message->getPage($id);
             $page = new PageView();
             $page->index($messageID);
-//            var_dump($messageData);
-//            echo $id;
         }
 
         public function delete(){
@@ -51,8 +42,6 @@
                 $model = new RemoveModel;
                 $model->getID($id);
                 $this->index();
-                
-//                echo "jnjvela";
             }
         }
         
